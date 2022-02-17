@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileAir</title>
+    <script>
+        window.transitionToPage = function(href) {
+        document.getElementById("hc").style.opacity = 0;
+        document.getElementById("clouds").style.opacity = 0;
+        setTimeout(function() { 
+                window.location.href = href
+            }, 500)
+        }
+
+    document.addEventListener('DOMContentLoaded', function(event) {
+        document.getElementById("hc").style.opacity = 1;
+        document.getElementById("clouds").style.opacity = 1;
+    })
+    </script>
+</head>
+<body>
+    <h1 class="name" align="center">
+        FileAir
+    </h1>
+    <a align="center" id="hc" class="cloud7" onclick="transitionToPage('/upload')">
+        <div align="center" class="btn">  
+            <div><b>Upload files</b></div>
+        </div>
+    </a>  
+    
+    <div class="mb-cloud" id="clouds">  
+        <div class="cloud1"></div>   
+        <div class="cloud2"></div>   
+        <div class="cloud3"></div>   
+        <div class="cloud4"></div>   
+        <div class="cloud5"></div>   
+        <div class="cloud6"></div>   
+    </div>
+
+    <div class="world"></div>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro:wght@300&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        font-family: 'Source Code Pro', monospace;
+        background: linear-gradient(#87CEEB,#E0FFFF) fixed;
+        overflow: hidden;
+    }
+
+    #hc,
+    #clouds {
+        transition: opacity .5s;
+    }
+
+    .world {
+        position: absolute;
+        background-color: rgb(150, 226, 90);
+        width: 101%;
+        height: 200px;
+        top: 90%;
+        left: -1%;
+    }
+
+    .btn {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+        color: black;
+        font-size: larger;
+        z-index:3;
+    }
+
+    .mb-cloud {
+        position: relative;
+    }
+
+    .cloud7 {
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px; 
+        width: 200px;    
+        height: 60px;    
+        background: white; 
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index:2;
+    }
+
+    .cloud7:hover,
+    .cloud7:hover::after,
+    .cloud7:hover::before {
+        background-color: gray;
+        cursor: pointer;
+    }
+
+    .cloud7:after {    
+    
+        content: '';    
+        position: absolute;    
+        top:-40px;    
+        left: 20px;    
+        width: 80px;    
+        height: 80px;     
+        background: white;  
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px;
+        z-index:2;
+    }    
+
+    .cloud7:before {    
+
+        content: '';    
+        position: absolute;    
+        top:-60px;    
+        right: 30px;    
+        width: 100px;    
+        height: 100px;    
+        background: white;   
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px;
+        z-index:2;
+    }
+
+    .cloud1,  
+    .cloud2,  
+    .cloud3,  
+    .cloud4,  
+    .cloud5,  
+    .cloud6 { 
+    
+        position: absolute;  
+    
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px; 
+    }
+    
+    .cloud1, .cloud4 {    
+    
+        width: 200px;    
+        height: 60px;    
+        background: #00c9ee;  
+    }    
+    
+    .cloud1 {  
+    
+        top: 80px;  
+        left:-230px;  
+        animation: cloud1 50s infinite linear;  
+    }  
+    
+    @keyframes cloud1 {  
+        from{transform: translate3d(-130px,0,0)}  
+        to{transform: translate3d(1900px,0,0)}  
+    }  
+    
+    .cloud2 {  
+    
+        top: 200px;  
+        left:-230px;  
+        animation: cloud2 20s infinite linear;  
+    }  
+    
+    @keyframes cloud2 {  
+        from{transform: translate3d(-90px,0,0)}  
+        to{transform: translate3d(1900px,0,0)}  
+    }  
+    
+    .cloud3 {  
+    
+        top: 300px;  
+        right:-230px;  
+        animation: cloud3 60s infinite linear;  
+    }  
+    
+    @keyframes cloud3 {  
+        from{transform: translate3d(210px,0,0)}  
+        to{transform: translate3d(-1900px,0,0)}  
+    }  
+    
+    .cloud4 {  
+    
+        top: 400px;  
+        left:-230px;  
+        animation: cloud4 80s infinite linear;  
+    }  
+    
+    @keyframes cloud4 {  
+        from{transform: translate3d(-80px,0,0)}  
+        to{transform: translate3d(1900px,0,0)}  
+    }  
+    
+    .cloud5 {  
+    
+        top: 300px;  
+        left:-230px;  
+        animation: cloud5 100s infinite linear 1s;  
+    }  
+    
+    @keyframes cloud5 {  
+        from{transform: translate3d(-80px,0,0)}  
+        to{transform: translate3d(1900px,0,0)}  
+    }  
+    
+    .cloud6 {  
+    
+        top: 150px;  
+        right:-230px;  
+        animation: cloud6 40s infinite linear 1s;  
+    }  
+    
+    @keyframes cloud6 {  
+        from{transform: translate3d(300px,0,0)}  
+        to{transform: translate3d(-1900px,0,0)}  
+    }     
+    
+    .cloud1:after, .cloud4:after {    
+    
+        content: '';    
+        position: absolute;    
+        top:-40px;    
+        left: 20px;    
+        width: 80px;    
+        height: 80px;     
+        background: #00c9ee;  
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px; 
+    }    
+    
+    .cloud1:before, .cloud4:before {    
+    
+        content: '';    
+        position: absolute;    
+        top:-60px;    
+        right: 30px;    
+        width: 100px;    
+        height: 100px;    
+        background: #00c9ee;   
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px; 
+    }    
+    
+    .cloud2, .cloud5 {    
+    
+        width: 100px;    
+        height: 30px;   
+        background: #00c9ee;    
+    }    
+    
+    .cloud2:after, .cloud5:after {    
+    
+        content: '';    
+        position: absolute;    
+        width: 40px;    
+        height: 40px;    
+        top:-20px;    
+        left: 10px;    
+        background: #00c9ee;    
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px; 
+    }    
+    
+    .cloud2:before, .cloud5:before {    
+    
+        content: '';  
+        position: absolute;    
+        top:-30px;    
+        right: 15px;    
+        width: 50px;    
+        height: 50px;    
+        background: #00c9ee;   
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px; 
+    }    
+    
+    .cloud3, .cloud6 {    
+    
+        width: 200px;    
+        height: 60px;    
+        background: #00f1ee;    
+        box-shadow: 0px 0px 20px 5px #00f1ee;    
+        -moz-box-shadow: 0px 0px 20px 5px #00f1ee;    
+        -webkit-box-shadow: 0px 0px 20px 5px #00f1ee;    
+    }    
+    
+    .cloud3:after, .cloud6:after {    
+    
+        content: '';    
+        position: absolute;   
+        width: 80px;    
+        height: 80px;    
+        top:-40px;    
+        left: 20px;    
+        background: #00f1ee;   
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px; 
+        box-shadow: 0px 0px 20px 5px #00f1ee;    
+        -moz-box-shadow: 0px 0px 20px 5px #00f1ee;    
+        -webkit-box-shadow: 0px 0px 20px 5px #00f1ee;  
+    }    
+    
+    .cloud3:before, .cloud6:before {    
+    
+        content: '';    
+        position: absolute;   
+        width: 100px;    
+        height: 100px;    
+        top:-60px;    
+        right: 30px;    
+        background: #00f1ee;    
+        -webkit-border-radius: 200px;    
+        -moz-border-radius: 200px;    
+        border-radius: 200px; 
+        box-shadow: 0px 0px 20px 5px #00f1ee;    
+        -moz-box-shadow: 0px 0px 20px 5px #00f1ee;    
+        -webkit-box-shadow: 0px 0px 20px 5px #00f1ee;  
+    } 
+</style>
+</html>
