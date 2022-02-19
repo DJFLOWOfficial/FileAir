@@ -131,7 +131,8 @@
     }
 
     #dark,
-    #light {
+    #auto,
+    #autow {
         display: none;
     }
 
@@ -422,14 +423,4 @@
         -webkit-box-shadow: 0px 0px 20px 5px #00f1ee;  
     } 
 </style>
-<script>
-    if (prefersDarkScheme.matches) {
-        document.body.classList.toggle('theme');
-        document.getElementById('auto').style.display = "none"
-        console.log(prefersDarkScheme);
-    } else {
-        document.getElementById('autow').style.display = "none"
-        document.getElementById('auto').style.display = "unset"
-    }
-</script>
 </html>

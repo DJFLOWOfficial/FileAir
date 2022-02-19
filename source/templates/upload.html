@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FileAir</title>
+    <title>FileAir - Upload</title>
     <script>
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
         window.transitionToPage = function(href) {
         document.getElementById("hc").style.opacity = 0;
         document.getElementById("clouds").style.opacity = 0;
@@ -20,67 +18,17 @@
         document.getElementById("hc").style.opacity = 1;
         document.getElementById("clouds").style.opacity = 1;
     })
-
-
-    function theme(m) {
-        if (m == "light") {
-            if (prefersDarkScheme.matches) {
-                document.body.classList.toggle('theme');
-                document.getElementById('light').style.display = "none";
-                document.getElementById('autow').style.display = "unset";
-            } else {
-                document.getElementById('light').style.display = "none";
-                document.getElementById('auto').style.display = "unset";
-            }
-            document.cookie = "theme=auto"
-        }
-        else if (m == "auto") {
-            if (prefersDarkScheme.matches) {
-                document.getElementById('autow').style.display = "none";
-                document.getElementById('dark').style.display = "unset";
-            } else {
-                document.body.classList.toggle('theme');
-                document.getElementById('auto').style.display = "none";
-                document.getElementById('dark').style.display = "unset";
-            }
-            document.cookie = "theme=dark"
-            
-        }
-        else if (m == "dark") {
-            document.body.classList.toggle('theme');
-            document.getElementById('dark').style.display = "none";
-            document.getElementById('light').style.display = "unset";
-            document.cookie = "theme=light"
-        }
-    }
     </script>
 </head>
 <body>
-    <h1 class="name" align="center">
+    <h1 onclick="transitionToPage('/')" class="name" align="center">
         FileAir
     </h1>
-
-    <a class="thmbtn" id="light" onclick="theme('light')">
-        <img class="th" src="media?file=light.svg" alt="Light mode" title="Light mode">
-    </a>
-
-    <a class="thmbtn" id="dark" onclick="theme('dark')">
-        <img class="th" src="media?file=dark.svg" alt="Dark mode" title="Dark mode">
-    </a>
-
-    <a class="thmbtn" id="auto" onclick="theme('auto')">
-        <img class="th" src="media?file=auto.svg" alt="Auto mode" title="Auto mode">
-    </a>
-
-    <a class="thmbtn" id="autow" onclick="theme('auto')">
-        <img class="th" src="media?file=auto_w.svg" alt="Auto mode" title="Auto mode">
-    </a>
-
     <a align="center" id="hc" class="cloud7" onclick="transitionToPage('/upload')">
         <div align="center" class="btn">  
             <div><b>Upload files</b></div>
         </div>
-    </a>
+    </a>  
     
     <div class="mb-cloud" id="clouds">  
         <div class="cloud1"></div>   
@@ -90,61 +38,22 @@
         <div class="cloud5"></div>   
         <div class="cloud6"></div>   
     </div>
-
-    <div class='stars'></div>
-
 </body>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro:wght@300&display=swap');
 
-    body.theme {
-        --gradient: linear-gradient(to top, #283E51, #0A2342) fixed;
-        --stars: unset;
-        --hdcolor: white;
-    }
-
-    body {
-        --gradient: linear-gradient(#87CEEB,#E0FFFF) fixed;
-        --stars: none;
-        --hdcolor: black;
-    }
-
     body {
         font-family: 'Roboto', sans-serif;
         font-family: 'Source Code Pro', monospace;
+        background: linear-gradient(#87CEEB,#E0FFFF) fixed;
         overflow: hidden;
-        background: var(--gradient);
     }
 
-    .name {
-        color: var(--hdcolor);
-        z-index: 4;
-    }
-
-    .thmbtn {
-        position: absolute;
-        z-index: 10;
-        color: var(--hdcolor);
+    .name:hover {
         cursor: pointer;
-        right: 30px;
-        top: 30px;
     }
 
-    #dark,
-    #light {
-        display: none;
-    }
-
-    .stars {
-        display: var(--stars);
-        position: absolute;
-        background:url(media?file=stars.png) repeat top center;
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        top: 0;
-    }
-
+    #hc,
     #clouds {
         transition: opacity .5s;
     }
@@ -162,7 +71,6 @@
 
     .mb-cloud {
         position: relative;
-        z-index: 1;
     }
 
     .cloud7 {
@@ -199,12 +107,7 @@
         -moz-border-radius: 200px;    
         border-radius: 200px;
         z-index:2;
-        transition: 0.3s;
-    }   
-    
-    #hc {
-        transition: 0.3s;
-    }
+    }    
 
     .cloud7:before {    
 
@@ -219,7 +122,6 @@
         -moz-border-radius: 200px;    
         border-radius: 200px;
         z-index:2;
-        transition: 0.3s;
     }
 
     .cloud1,  
@@ -422,14 +324,4 @@
         -webkit-box-shadow: 0px 0px 20px 5px #00f1ee;  
     } 
 </style>
-<script>
-    if (prefersDarkScheme.matches) {
-        document.body.classList.toggle('theme');
-        document.getElementById('auto').style.display = "none"
-        console.log(prefersDarkScheme);
-    } else {
-        document.getElementById('autow').style.display = "none"
-        document.getElementById('auto').style.display = "unset"
-    }
-</script>
 </html>
