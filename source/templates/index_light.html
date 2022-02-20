@@ -53,27 +53,37 @@
             document.cookie = "theme=light"
         }
     }
+
+    function alte(elem){
+        var alt = document.createTextNode( elem.getAttribute('alt') );
+        
+        elem.parentNode.insertBefore( alt, elem );
+        
+        elem.parentNode.removeChild( elem );
+    }
     </script>
 </head>
 <body>
     <h1 class="name" align="center">
-        FileAir
+        <span id="name">
+            FileAir
+        </span>
     </h1>
 
     <a class="thmbtn" id="light" onclick="theme('light')">
-        <img class="th" src="media?file=light.svg" alt="Light mode" title="Light mode">
+        <img class="th" src="media?file=light.svg" alt="Light mode" title="Light mode" onerror="alte(this)">
     </a>
 
     <a class="thmbtn" id="dark" onclick="theme('dark')">
-        <img class="th" src="media?file=dark.svg" alt="Dark mode" title="Dark mode">
+        <img class="th" src="media?file=dark.svg" alt="Dark mode" title="Dark mode" onerror="alte(this)">
     </a>
 
     <a class="thmbtn" id="auto" onclick="theme('auto')">
-        <img class="th" src="media?file=auto.svg" alt="Auto mode" title="Auto mode">
+        <img class="th" src="media?file=auto.svg" alt="Auto mode" title="Auto mode" onerror="alte(this)">
     </a>
 
     <a class="thmbtn" id="autow" onclick="theme('auto')">
-        <img class="th" src="media?file=auto_w.svg" alt="Auto mode" title="Auto mode">
+        <img class="th" src="media?file=auto_w.svg" alt="Auto mode" title="Auto mode" onerror="alte(this)">
     </a>
 
     <a align="center" id="hc" class="cloud7" onclick="transitionToPage('/upload')">

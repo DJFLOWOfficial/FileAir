@@ -7,7 +7,7 @@
     <title>FileAir</title>
     <script>
         const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
+        
         window.transitionToPage = function(href) {
         document.getElementById("hc").style.opacity = 0;
         document.getElementById("clouds").style.opacity = 0;
@@ -65,7 +65,7 @@
 </head>
 <body>
     <h1 class="name" align="center">
-        <span id="name">
+        <span id="name" onclick="transitionToPage('/')">
             FileAir
         </span>
     </h1>
@@ -86,9 +86,9 @@
         <img class="th" src="media?file=auto_w.svg" alt="Auto mode" title="Auto mode" onerror="alte(this)">
     </a>
 
-    <a align="center" id="hc" class="cloud7" onclick="transitionToPage('/upload')">
+    <a align="center" id="hc" class="cloud7" onclick="window.location.href = '/getfile?id={{id}}'">
         <div align="center" class="btn">  
-            <div><b>Upload files</b></div>
+            <div><b>Download files</b></div>
         </div>
     </a>
     
@@ -107,13 +107,13 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro:wght@300&display=swap');
 
-    body.theme {
+    body {
         --gradient: linear-gradient(to top, #283E51, #0A2342) fixed;
         --stars: unset;
         --hdcolor: white;
     }
 
-    body {
+    body.theme {
         --gradient: linear-gradient(#87CEEB,#E0FFFF) fixed;
         --stars: none;
         --hdcolor: black;
@@ -131,6 +131,10 @@
         z-index: 4;
     }
 
+    #name {
+        cursor: pointer;
+    }
+
     .thmbtn {
         position: absolute;
         z-index: 10;
@@ -140,8 +144,9 @@
         top: 30px;
     }
 
-    #dark,
-    #light {
+    #light,
+    #auto,
+    #autow {
         display: none;
     }
 
@@ -432,14 +437,4 @@
         -webkit-box-shadow: 0px 0px 20px 5px #00f1ee;  
     } 
 </style>
-<script>
-    if (prefersDarkScheme.matches) {
-        document.body.classList.toggle('theme');
-        document.getElementById('auto').style.display = "none"
-        console.log(prefersDarkScheme);
-    } else {
-        document.getElementById('autow').style.display = "none"
-        document.getElementById('auto').style.display = "unset"
-    }
-</script>
 </html>

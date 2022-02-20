@@ -1,4 +1,7 @@
+import os
 from flask import Flask, request, render_template, redirect, send_file
+import random
+import shutil
 
 app = Flask(__name__)
 
@@ -18,7 +21,50 @@ def index():
 
 @app.route('/upload')
 def upload():
-    return render_template("upload.html")
+    return render_template("upload_test.html")
+
+@app.route('/upload', methods=['GET', 'POST'])
+def uploadpost():
+    id = random.randint(1111111111, 9999999999)
+    os.makedirs(f'./source/uploads/{id}')
+    files = request.files.getlist('file')
+    for file in files:
+        file.save(f'./source/uploads/{id}/{file.filename}')
+
+    shutil.make_archive(f"./source/uploads/{id}", "zip", root_dir=f"./source/uploads/{id}")
+
+    shutil.rmtree(f'./source/uploads/{id}')
+
+    return "finished1"
+
+@app.route('/download')
+def download():
+    if request.args.get("id") is None:
+        return redirect('/')
+    if request.args.get("id"):
+        theme_cookie = request.cookies.get("theme")
+        if theme_cookie is None:
+            return render_template("download.html", id = request.args.get("id"))
+        elif theme_cookie == "light":
+            return render_template("download_light.html", id = request.args.get("id"))
+        elif theme_cookie == "dark":
+            return render_template("download_dark.html", id = request.args.get("id"))
+        elif theme_cookie == "auto":
+            return render_template("download.html", id = request.args.get("id"))
+        else:
+            return "Error"
+
+@app.route('/getfile')
+def getfile():
+    if request.args.get("id") is None:
+        return redirect('/')
+    if request.args.get("id"):
+        try:
+            return send_file("uploads/"+ request.args.get("id") + ".zip", as_attachment=True)
+        except:
+            return redirect("/")
+
+
 
 @app.route("/media")
 def media():
