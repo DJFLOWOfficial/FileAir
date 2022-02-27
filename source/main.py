@@ -42,17 +42,20 @@ def download():
     if request.args.get("id") is None:
         return redirect('/')
     if request.args.get("id"):
-        theme_cookie = request.cookies.get("theme")
-        if theme_cookie is None:
-            return render_template("download.html", id = request.args.get("id"))
-        elif theme_cookie == "light":
-            return render_template("download_light.html", id = request.args.get("id"))
-        elif theme_cookie == "dark":
-            return render_template("download_dark.html", id = request.args.get("id"))
-        elif theme_cookie == "auto":
-            return render_template("download.html", id = request.args.get("id"))
+        if os.path.exists("./source/uploads/" + request.args.get("id") + ".zip"):
+            theme_cookie = request.cookies.get("theme")
+            if theme_cookie is None:
+                return render_template("download.html", id = request.args.get("id"))
+            elif theme_cookie == "light":
+                return render_template("download_light.html", id = request.args.get("id"))
+            elif theme_cookie == "dark":
+                return render_template("download_dark.html", id = request.args.get("id"))
+            elif theme_cookie == "auto":
+                return render_template("download.html", id = request.args.get("id"))
+            else:
+                return "Error"
         else:
-            return "Error"
+            return redirect('/')
 
 @app.route('/getfile')
 def getfile():
